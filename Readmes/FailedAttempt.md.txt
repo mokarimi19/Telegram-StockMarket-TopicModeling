@@ -1,0 +1,18 @@
+# Failed Attempt
+At first, I misunderstood problem as sentiment analysis, As it is common to analyzing sentiment of stock market activists' reviews of symbols to predict sales and buy queues. As dataset was unlabeled and large. I studied many thing about how to accomplish this task:
+
+- Unsupervised Sentiment Analysis
+    * [Sentiment Analysis Clustering](https://towardsdatascience.com/unsupervised-sentiment-analysis-a38bf1906483)
+    -- The idea is to apply word2vec word embeding on data. then to cluster data into two clusters, meaning binary clustering using K-means. Then define sentiment score using distance measure. after a specifity score for word in document using tfidf scores,  developing a modeld to score each document using words sentments score and specifity.
+    * [Unsupervised Sentiment Analysis Tools](https://medium.com/@Intellica.AI/vader-ibm-watson-or-textblob-which-is-better-for-unsupervised-sentiment-analysis-db4143a39445):
+    -- There are some pretrained S.A. tools for english language like, **TextBlob** and **Vader** and **IBM Watson**. Watosn is commertial solution, but the two first are for free. All of this techniques are applicable for English!
+
+- Labeling Large Dataset:
+    * Random Labeling
+    -- Forget the tools name! something like anura!
+    * Active learning:
+    -- Interacive labeling of data using ML.
+    * Text annotation tools:
+    -- I tested **[doccano](https://github.com/doccano/doccano)** on an ubuntu server in an intelligent way to train model on small labeled data then test unlabeled data with model and correct wrong label!
+
+**Caution:** Most of telegram posts don't imply any positive or negative sentiment, thus those are neutral.
