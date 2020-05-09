@@ -1,17 +1,17 @@
 # Topic Modeling for Iran Stock Market data of Telegram Posts
-Topic modeling of datasets of telegram posts about Tehran Stock Market' symbols and industries using LDA and lda2vec.
+Topic modeling of datasets of telegram posts about Tehran Stock Market's symbols and industries using LDA and lda2vec.
 
 Link of Codes on [google colab](https://drive.google.com/file/d/17aCmKkY147Bdn01_KBJ8XlrS0KOULAFC/view?usp=sharing).
 
 ----
 
-There are 4 moure popular methods for topic modeling:
-  - **LSA** : Latent Semantic Analysis
+There are 4 more popular methods for topic modeling:
+  - **LSA**: Latent Semantic Analysis
   -- Building Document-Term Matrix
--- Convert to tf-idf scores
--- Decomposing Documnet-Term Matrix to Documnet-Topic and Term-Topic Matrices Using Truncated SVD
-  - **pLSA** : Probablistic Latent Semantic Analysis
-  -- Like LSA otherwise, Probablistic Technique to Matrix Decomposion Instead of SVD
+-- Convert to TF-IDF scores
+-- Decomposing Document-Term Matrix to Document-Topic and Term-Topic Matrices Using Truncated SVD
+  - **pLSA** : Probabilistic Latent Semantic Analysis
+  -- Like LSA otherwise, Probabilistic Technique to Matrix Decomposition Instead of SVD
   - **LDA** : 
   -- Bayesian Version of pLSA
   - ****LDA2VEC****
@@ -20,17 +20,17 @@ There are 4 moure popular methods for topic modeling:
 -- This Method First Presented in [Chris Moody's paper](https://arxiv.org/abs/1605.02019)
 
 # Implementations
-There are some implementation of LDA2VEC. I reused the implemetaion of [LDA2VEC by PyTorch](https://github.com/TropComplique/lda2vec-pytorch). 
+There is some implementation of LDA2VEC. I reused the implementation of [LDA2VEC by PyTorch](https://github.com/TropComplique/lda2vec-pytorch). 
 
-As soon as, we want to just represent term-topic of each document. we just need **Gensim** for loading *models.Lda2Model* as **lda** part and  *models.Word2Vec* as **VEC** part!
+As soon as, we want to just represent the term-topic of each document. we just need **Gensim** for loading *models.Lda2Model* as **LDA** part and  *models.Word2Vec* as **VEC** part!
 
-There are implementaion of both LDA and lda2vec.
+There are implementations of both LDA and lda2vec.
 # Parameters
 - MIN_COUNTS 
  - MAX_COUNTS 
  words with count < MIN_COUNTS and count > MAX_COUNTS  will be removed
 - n_topics 
-Number of topic we want to extract from bunch of docs
+Number of the topic we want to extract from a bunch of docs
  - MIN_LENGTH 
  minimum document length, meaning, number of words, after preprocessing
 
@@ -38,12 +38,12 @@ Number of topic we want to extract from bunch of docs
  half the size of the context around a word. it must be that 2*HALF_WINDOW_SIZE < MIN_LENGTH
 
 #  Attempts
-- I had trained word-embedding on whole posts, But created LDA for each symbol or industry. so as to get richer word-embedding, but the result was disappointing! I think, This is not wrong way and the fault was somewhere else!
-- I changed the stratergy to seperate data accoding to industries and symbols. Then train word2vec on each industry or symbol, then create lda model on that.
- - after some different config testing, I come to MAX_COUNTS. It really get result better.
+- I had trained word-embedding on whole posts But created LDA for each symbol or industry. so as to get richer word-embedding, but the result was disappointing! I think This is no the wrong way and the fault was somewhere else!
+- I changed the strategy to separate data according to industries and symbols. Then train word2vec on each industry or symbol, then create an LDA model on that.
+ - after some different config testing, I come to MAX_COUNTS. It really gets the result better.
  
 # Execution
-- All time-intensive operations, has dumped to numpy and pickles.
+- All time-intensive operations have dumped to NumPy and pickles.
 # Result
 ## Industry = IREXBANKSCREDITINSTITUTIONS
 ### LDA
@@ -138,20 +138,20 @@ topic 10 : آمریکا کشور برجا تعهدات توافق اروپا م�
 
 
 # Failed Attempt
-At first, I misunderstood problem as sentiment analysis, As it is common to analyzing sentiment of stock market activists' reviews of symbols to predict sales and buy queues. As dataset was unlabeled and large. I studied many thing about how to accomplish this task:
+At first, I misunderstood the problem as sentiment analysis, As it is common to analyzing sentiment of stock market activists' reviews of symbols to predict sales and buy queues. As dataset was unlabeled and large. I studied many things about how to accomplish this task:
 
 - Unsupervised Sentiment Analysis
     * [Sentiment Analysis Clustering](https://towardsdatascience.com/unsupervised-sentiment-analysis-a38bf1906483)
-    -- The idea is to apply word2vec word embeding on data. then to cluster data into two clusters, meaning binary clustering using K-means. Then define sentiment score using distance measure. after a specifity score for word in document using tfidf scores,  developing a modeld to score each document using words sentments score and specifity.
+    -- The idea is to apply word2vec word embedding on data. then to cluster data into two clusters, meaning binary clustering using K-means. Then define sentiment score using a distance measure. after a specificity score for a word in the document using TF-IDF scores,  developing a model to score each document using words sentiments score and specificity.
     * [Unsupervised Sentiment Analysis Tools](https://medium.com/@Intellica.AI/vader-ibm-watson-or-textblob-which-is-better-for-unsupervised-sentiment-analysis-db4143a39445):
-    -- There are some pretrained S.A. tools for english language like, **TextBlob** and **Vader** and **IBM Watson**. Watosn is commertial solution, but the two first are for free. All of this techniques are applicable for English!
+    -- There are some pre-trained S.A. tools for English language like **TextBlob** and **Vader** and **IBM Watson**. Watson is a commercial solution, but the two first are for free. All of these techniques are applicable to English!
 
 - Labeling Large Dataset:
     * Random Labeling
-    -- Forget the tools name! something like anura!
+    -- Forget the tools name! something like Anura!
     * Active learning:
-    -- Interacive labeling of data using ML.
+    -- Interactive labeling of data using ML.
     * Text annotation tools:
-    -- I tested **[doccano](https://github.com/doccano/doccano)** on an ubuntu server in an intelligent way to train model on small labeled data then test unlabeled data with model and correct wrong label!
+    -- I tested **[doccano](https://github.com/doccano/doccano)** on an ubuntu server in an intelligent way to train the model on small labeled data then test unlabeled data with model and correct wrong label!
 
 **Caution:** Most of telegram posts don't imply any positive or negative sentiment, thus those are neutral.
