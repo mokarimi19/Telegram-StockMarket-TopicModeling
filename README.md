@@ -1,6 +1,10 @@
 # Topic Modeling for Iran Stock Market data of Telegram Posts
 Topic modeling of datasets of telegram posts about Tehran Stock Market' symbols and industries using LDA and lda2vec.
 
+Link of Codes on [google colab](https://drive.google.com/file/d/17aCmKkY147Bdn01_KBJ8XlrS0KOULAFC/view?usp=sharing).
+
+----
+
 There are 4 moure popular methods for topic modeling:
   - **LSA** : Latent Semantic Analysis
   -- Building Document-Term Matrix
